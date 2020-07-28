@@ -9,18 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <title>Hello, world!</title>
-    <script>
-        let a;
-        let date;
-        let time;
-        const option ={ weekday:'long', year: 'numeric', month:'long', day:'numeric'};
-        setInterval(() => {
-        a= new Date();
-        date =a.toLocaleDateString(undefined, option);
-        time = a.getHours() + ':'+ a.getMinutes()+':'+a.getSeconds();
-        document.getElementById('time').innerHTML= time + "<br>on " + date;
-    }, 1000);
-    </script>
+    
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -38,35 +27,48 @@
               <li class="nav-item">
                   <a class="nav-link" href="about-us.html">About</a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                   <a class="nav-link " href="index.html"  role="button" >
                       Current Time And Date
                   </a>
                  
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                   <a class="nav-link" href="contact.html" tabindex="-1" aria-disabled="true">Contact</a>
               </li>
           </ul>
          
       </div>
-  </nav>
-   <div class="container my-4">
+      </nav>
+      <div class="container">   <form class="my-4">
+        <div class="form-group ">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control form-control-sm" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" class="form-control form-control-lg" placeholder="Enter email">
+            <small class="form-text text-muted">Your email will not be shared with anyone</small>
+        </div>
+        <div class="form-group">
+            <label for="email">Phone No</label>
+            <input type="number" id="email" class="form-control form-control-lg" placeholder="Enter number">
+            <small class="form-text text-muted">Your number will not be shared with anyone</small>
+        </div>
+       
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="3" class="form-control"></textarea>
+        </div>
+        
 
-    <div class="jumbotron">
-        <h1 class="display-4">Current Time is :<span id="time"></span> </h1>
-      
-        <hr class="my-4">
-        <p>We are here to show the time for different countries</p>
-        <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Browser Time</a>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-            </div>
-          </div>
-      </div>
-   </div>
-
+        <!-- FORM CHECK -->
+        
+       
+        <button class="btn btn-primary" type="submit">Submit</button>
+        
+    </form></div>
+   
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

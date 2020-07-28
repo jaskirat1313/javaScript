@@ -23,30 +23,25 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="about-us.html">About</a>
+                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="todos-list.html">Todos List <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Items
+                <li class="nav-item ">
+                    <a class="nav-link " href="index.html"  role="button" >
+                        Current Time And Date
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                   
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Contact</a>
+                    <a class="nav-link" href="contact.html" tabindex="-1" aria-disabled="true">Contact</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input id="myInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <input id="myInput" onkeyup="myFunction()" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                 
             </form>
         </div>
@@ -54,22 +49,25 @@
 
     <div class="container my-4">
         <h2 class="text-center">TODOs List</h2>
-         
+         <form>
+
+
+        
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="title" aria-describedby="emailHelp" required>
                 <small id="emailHelp" class="form-text text-muted">Add an item to the list</small>
             </div>
 
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea class="form-control" id="description" rows="3"></textarea>
+                <textarea class="form-control" id="description" rows="3" required></textarea>
             </div>
             
 
             <button   id="add" class="btn btn-primary">Add to list</button>
             <button  id="clear" class="btn btn-primary" onclick="clearStorage()">Clear list</button>
-         
+        </form>
 
         <div id="items" class="my-4">
             <h2>Your Items</h2>
@@ -80,6 +78,7 @@
                     <th scope="col">Item Title</th>
                     <th scope="col">Item Description</th> 
                     <th scope="col">Actions</th> 
+                    <th scope="col">if Done</th> 
                   </tr>
                 </thead>
                 <tbody id="tableBody">
@@ -144,6 +143,7 @@
                     <td>${element[0]}</td>
                     <td>${element[1]}</td> 
                     <td><button class="btn btn-sm btn-primary" onclick="deleted(${index})">Delete</button></td> 
+                    <td><button class="btn btn-sm btn-primary" onclick="$( 'tr:eq(${index+1})' ).css( 'color', 'blue' );">Done</button></td> 
                     </tr>`; 
                 });
                 tableBody.innerHTML = str;
@@ -169,24 +169,32 @@
                 }
             }
             
-function myFunction() {
-    var input, filter, table, tr, a, td, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("tableBody");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td","th")[0];
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-        } else {
-            tr[i].style.display = "none";
-        }
-    }
-}
+
 
         </script>
+        <script>
+            function myFunction() {
+              // Declare variables
+              var input, filter, table, tr, td, i, txtValue;
+              input = document.getElementById("myInput");
+              filter = input.value.toUpperCase();
+              table = document.getElementById("tableBody");
+              tr = table.getElementsByTagName("tr");
+            
+              // Loop through all table rows, and hide those who don't match the search query
+              for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                  } else {
+                    tr[i].style.display = "none";
+                  }
+                }
+              }
+            }
+            </script>
 </body>
 
 </html>
